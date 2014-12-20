@@ -1,6 +1,6 @@
 ProteinInference
 -------------------------------------------------------
-Run MAgPI:
+Run Project:
 Open the project in Netbeans.
 sigmaTestData Contains a file(includes test peptides) for running the test.
 
