@@ -37,7 +37,7 @@ public final class ProteinInference {
     static double beta=0.23;
     static double epsilon = 0.55;
     ArrayList<Integer>peptides;
-    int total_iteration=0;
+    static int total_iteration=0;
     ArrayList<Integer> actualProteinsList = new ArrayList<Integer>();
     Random randomGenerator = new Random();
     int [][]parentOffspringPopulation = new int[populationSize+Util.num_off][];
@@ -137,6 +137,7 @@ public final class ProteinInference {
                 avgTP/=testExampleNo;
                 avgFN/=testExampleNo;
                 avgFP/=testExampleNo;
+                total_iteration++;
                 System.out.println("Average: \n"+" TP->"+String.format("%.5f", avgTP)+"\n FP->"+String.format("%.5f",avgFP)+"\n FN->"+String.format("%.5f",avgFN)+"\n Precision->"+String.format("%.5f", avgPrecision)+"\n Recall->"+String.format("%.5f",avgRecall)+"\n FMeans->"+String.format("%.5f", avgFmeans)+"\n\n");
                 outputBufferWriter.write(total_iteration+","+epsilon+","+String.format("%.2f", avgTP)+","+String.format("%.2f",avgFP)+","+String.format("%.2f",avgFN)+","+String.format("%.2f", avgPrecision)+","+String.format("%.2f",avgRecall)+","+String.format("%.2f", avgFmeans)+"\n");
                 parameterWriter.println(epsilon+","+beta+","+avgTP+","+avgFP+","+avgFN+","+avgPrecision+","+avgRecall+","+avgFmeans);
@@ -291,7 +292,7 @@ public final class ProteinInference {
                 fitness[i] = evaluateFitness(population[i], true);
             }
         }
-        total_iteration=iteration;
+       // total_iteration++;//=iteration;
         return this.population[0];
     }
 
